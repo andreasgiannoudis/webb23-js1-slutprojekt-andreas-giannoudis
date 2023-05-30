@@ -1,0 +1,138 @@
+/* General styles */
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  font-family: Arial, sans-serif;
+  background-image: linear-gradient(to right top, #5477ab, #2798b8, #4bb4ab, #94c998, #dfd797);
+  height: 100vh;
+  margin: 0;
+}
+  
+  form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+  
+  input[type="text"] {
+    padding: 15px;
+    font-size: 16px;
+    border-radius: 20px;
+  }
+
+  .forecastOptions{
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 15px;
+  }
+  
+  button {
+    padding: 15px 25px;
+    font-size: 16px;
+    background-color: #4caf50;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    margin-left: 10px;
+    border-radius: 30px;
+  }
+  
+  button:hover {
+    background-color: #45a049;
+  }
+  
+  .container {
+    display: none;
+    text-align: center;
+    padding: 20px;
+    background-color: #fbfbfb;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+
+  .container:hover {
+    box-shadow: 0 5px 8px rgba(67, 93, 169, 0.3); /* Use rgba(255, 0, 0, 0.3) for a subtle red color */
+  }
+  
+  
+  .container h2 {
+    font-size: 24px;
+    margin-bottom: 0px;
+  }
+  
+  .container p {
+    font-size: 18px;
+    margin-bottom: 20px;
+  }
+  
+  .container img {
+    max-width: 100%;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+
+  .changeBg {
+    background-repeat: no-repeat;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+  }
+
+  @keyframes shake {
+    0% {
+      transform: translateX(0);
+    }
+    20% {
+      transform: translateX(-10px);
+    }
+    40% {
+      transform: translateX(10px);
+    }
+    60% {
+      transform: translateX(-10px);
+    }
+    80% {
+      transform: translateX(10px);
+    }
+    100% {
+      transform: translateX(0);
+    }
+  }
+  
+  .error {
+    background-color: #ffdddd;
+    border: 1px solid #ff9999;
+    padding: 10px;
+    border-radius: 4px;
+    margin-top: 10px;
+    animation: shake 0.3s;
+    display: none; /* Hide the error div initially */
+  }
+  
+  .error p {
+    color: #ff0000;
+    font-size: 14px;
+  }
+
+  .forecast {
+    display: none;
+    margin: 10px;
+    text-align: center;
+    padding: 8px;
+    background-color: #fbfbfb;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+
+  label{
+    padding: 8px;
+  }
+  

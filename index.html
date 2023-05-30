@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather app</title>
+    <link rel="shortcut icon" href="">
+    <link rel="stylesheet" href="./style/style.css">
+    <script src="./js/script.js" defer></script>
+</head>
+
+<body>
+    <form action="">
+        <input type="text" name="" id="searchCity" placeholder="search city..">
+        <label>Forecast for the next</label>
+        <select id="forecastOptions" name="forecast" class="forecastOptions">
+            <option value="3">3h</option>
+            <option value="6">6h</option>
+            <option value="9">9h</option>
+            <option value="12">12h</option>
+            <option value="24">24h</option>
+          </select>
+        <button>Search</button>
+    </form>
+
+
+
+    <div id="container" class="container">
+        <h2 class="cityName"></h2>
+        <p class="cityPrognos" id="cityPrognos"></p>
+        <p class="cityPrognos" id="wind"></p>
+        <img src="" alt="">
+    </div>
+
+    <div id="error" class="error">
+        <p id="pError"></p>
+    </div>
+
+    <div id="forecast" class="forecast">
+        
+    </div>
+
+</body>
+</html>
