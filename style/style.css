@@ -135,4 +135,14 @@ body {
   label{
     padding: 8px;
   }
+
+  .forecastP {
+    margin: auto;
+    padding: 8x;
+    border: 1px solid #EBEBEB;
+  }
+
+  .forecastP:hover {
+    background: #97bec8;
+  }
   
