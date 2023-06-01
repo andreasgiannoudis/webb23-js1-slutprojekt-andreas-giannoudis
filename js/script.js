@@ -36,20 +36,27 @@ form.addEventListener('submit', function (event) {
             }
         })
         .then(city => {
-            const cityUrlWithCoords = `https://api.openweathermap.org/data/2.5/weather?lat=${city[0].lat}&lon=${city[0].lon}&appid=${apiKey}&units=metric`;
-            fetch(cityUrlWithCoords)
-                .then(response => {
-                    if (response.ok) {
-                        containerDiv.style.display = 'block';
-                        return response.json();
-                    } else {
-                        throw 'The given city does not exist! Make sure you wrote it correct!';
-                    }
-                })
-                .then(city => {
-                    displayWeather(city);
-                    changeBackground(city);
-                })
+            if (city[0].lat) {
+                const cityUrlWithCoords = `https://api.openweathermap.org/data/2.5/weather?lat=${city[0].lat}&lon=${city[0].lon}&appid=${apiKey}&units=metric`;
+                fetch(cityUrlWithCoords)
+                    .then(response => {
+                        if (response.ok) {
+                            containerDiv.style.display = 'block';
+                            return response.json();
+                        } else {
+                            throw 'The given city does not exist! Make sure you wrote it correct!';
+                        }
+                    })
+                    .then(city => {
+                        displayWeather(city);
+                        changeBackground(city);
+                    })
+            }
+            else {
+                throw 'The given city does not exist! Make sure you wrote it correctly!';
+            }
+
+
         })
         .catch(handleError);
 
@@ -144,7 +151,7 @@ function displayForecast(city, forecastValue) {
 const fewClouds = ['./img/fewClouds/fewClouds.jpg', './img/fewClouds/fewClouds1.jpg', './img/fewClouds/fewClouds2.jpg', './img/fewClouds/fewClouds3.jpg', './img/fewClouds/fewClouds4.jpg'];
 const clouds = ['./img/clouds/overcast.jpg', './img/clouds/clouds.jpg', './img/clouds/clouds1.jpg', './img/clouds/clouds2.jpg', './img/clouds/clouds3.jpg'];
 const rain = ['./img/rain/rain.jpg', './img/rain/rain1.jpg', './img/rain/rain2.jpg', './img/rain/rain3.jpg', './img/rain/rain4.jpg'];
-const sun = ['./img/sunny/sunny.jpg', './img/sunny/sunny1.jpg', './img/sunny/sunny2.jpg', './img/sunny/sunny3.jpg', './img/sunny/sunny4.jpg', './img/sunny/sunny5.jpg', './img/sunny/sunny6.jpg','./img/sunny/sunny7.jpg','./img/sunny/sunny8.jpg'];
+const sun = ['./img/sunny/sunny.jpg', './img/sunny/sunny1.jpg', './img/sunny/sunny2.jpg', './img/sunny/sunny3.jpg', './img/sunny/sunny4.jpg', './img/sunny/sunny5.jpg', './img/sunny/sunny6.jpg', './img/sunny/sunny7.jpg', './img/sunny/sunny8.jpg'];
 const night = ['./img/night/night.jpg', './img/night/night1.jpg', './img/night/night2.jpg', './img/night/night3.jpg'];
 const thunderstorm = ['./img/thunderstorm/thunderstorm1.jpg', './img/thunderstorm/thunderstorm2.jpg', './img/thunderstorm/thunderstorm3.jpg'];
 const mist = ['./img/misty/misty.jpg', './img/misty/misty1.jpg', './img/misty/misty2.jpg', './img/misty/misty3.jpg'];
@@ -199,12 +206,10 @@ function changeBackground(city) {
         else if (weatherDescription === "thunderstorm") {
             document.body.style.backgroundImage = 'url(' + thunderstorm[randomThunderImg] + ')';
         }
-        else if (weatherDescription === "mist")
-        {
+        else if (weatherDescription === "mist") {
             document.body.style.backgroundImage = 'url(' + mist[randomMistyImg] + ')';
         }
-        else if (weatherDescription === "snow")
-        {
+        else if (weatherDescription === "snow") {
             document.body.style.backgroundImage = 'url(' + mist[randomMistyImg] + ')';
         }
     }
@@ -224,7 +229,7 @@ const divError = document.querySelector('#error');
 const pError = document.querySelector('#pError');
 
 function handleError(error) {
-    
+
     containerDiv.style.display = 'none';
     forecastDiv.style.display = 'none';
     pError.innerText = error;
