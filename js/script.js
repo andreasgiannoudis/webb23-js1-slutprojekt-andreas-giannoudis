@@ -26,6 +26,7 @@ form.addEventListener('submit', function (event) {
     //and fetch the api url for the current weather in the specific coord (lat and lon)
     //if something doesn't happen as it is planned, for example writting a city that does not exist
     //then it catches it and throws an error message
+    //also checking if the lat is being accessed, otherwise throws error message
     fetch(cityApiUrl)
         .then(response => {
             if (response.ok) {
@@ -36,7 +37,7 @@ form.addEventListener('submit', function (event) {
             }
         })
         .then(city => {
-            if (city[0].lat) {
+            if (city && city[0] && city[0].lat) {
                 const cityUrlWithCoords = `https://api.openweathermap.org/data/2.5/weather?lat=${city[0].lat}&lon=${city[0].lon}&appid=${apiKey}&units=metric`;
                 fetch(cityUrlWithCoords)
                     .then(response => {
@@ -59,6 +60,7 @@ form.addEventListener('submit', function (event) {
 
         })
         .catch(handleError);
+
 
     //fetching the forecast api url
     //if everything is fine it responses with json
@@ -157,7 +159,7 @@ const thunderstorm = ['./img/thunderstorm/thunderstorm1.jpg', './img/thunderstor
 const mist = ['./img/misty/misty.jpg', './img/misty/misty1.jpg', './img/misty/misty2.jpg', './img/misty/misty3.jpg'];
 const snow = ['./img/snow/snow.jpg', './img/snow/snow1.jpg', './img/snow/snow2.jpg', './img/snow/snow3.jpg', './img/snow/snow4.jpg'];
 
-//it returns a random image from a given array 
+//it returns a random image from a given array
 function generateRandomBg(array) {
     return Math.floor(Math.random() * array.length);
 }
