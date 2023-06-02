@@ -64,7 +64,7 @@ form.addEventListener('submit', function (event) {
 
     //fetching the forecast api url
     //if everything is fine it responses with json
-    //if something unexpected happens then it throw an error message
+    //if something unexpected happens then it throws an error message
     fetch(forecastApiUrl)
         .then(response => {
             if (response.ok) {
